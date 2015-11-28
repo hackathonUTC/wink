@@ -2,20 +2,20 @@
 module.exports = [
 	[ 
 		{
-			"Langue": "francais",
-			"Situation amoureuse": "Célibataire" ,
-			"Sexe": "Homme" ,
-			"Date de naissance": "12/02/1995" , // "JJ/MM/AAAA"
-			"Branche": "GI" ,
-			"Semestre": "01" ,
-			"Origine" : "France" ,
-			"Association": "Polar" ,
-			"Sport": "Aviron" ,
-			"Passion": "Lecture" ,
-			"Type de relation": "CDI" ,
-			"UVs": [
-						{"SY02": ["Amphi1", "TD05", "TP03"]} ,
-						{"MT90": ["Amphi", "TD07"]} 
+			"language": "francais",
+			"relationshipStatus": "Célibataire" ,
+			"gender": "Homme" ,
+			"birthday": "12/02/1995" , // "JJ/MM/AAAA"
+			"branch": "GI" ,
+			"semester": "01" ,
+			"origin" : "France" ,
+			"association": ["Polar"],
+			"sport": ["Aviron"],
+			"hobby": ["Lecture"],
+			"typeOfRelation": "CDI",
+			"uvs": [
+						{"SY02": ["amphi1", "TD05", "TP03"]} ,
+						{"MT90": ["amphi", "TD07"]} 
 					]
 		}	 
 	],
@@ -23,18 +23,18 @@ module.exports = [
 	//Representation criteres
 	[ 
 		{
-			"Sexe": "Homme" ,
-			"Année de naissance": "1995-2000" ,
-			"Branche": "GI" ,
-			"Semestre": "01" ,
-			"Origine" : "France" ,
-			"Association": "Polar" ,
-			"Sport": "Aviron" ,
-			"Passion": "Lecture" ,
-			"Type de relation": "CDI" ,
-			"UVs": [
-						{"SY02": ["Amphi1", "TD05", "TP03"]} ,
-						{"MT90": ["Amphi", "TD07"]} 
+			"gender": "Homme" ,
+			"birthday": "1995-2000" ,
+			"branch": "GI" ,
+			"semester": "01" ,
+			"origin" : "France" ,
+			"association": ["Polar"] ,
+			"sport": ["Aviron"] ,
+			"hobby": ["Lecture"] ,
+			"typeOfRelation": "CDI" ,
+			"uvs": [
+						{"SY02": ["amphi1", "TD05", "TP03"]} ,
+						{"MT90": ["amphi", "TD07"]} 
 					]
 		}	 
 	]
