@@ -1,6 +1,6 @@
-// Representation profil
 module.exports = [
-	[ 
+	[
+        // Representation profil
 		{
 			"Langue": "francais",
 			"Situation amoureuse": "Célibataire" ,
@@ -14,14 +14,17 @@ module.exports = [
 			"Passion": "Lecture" ,
 			"Type de relation": "CDI" ,
 			"UVs": [
-						{"SY02": ["Amphi1", "TD05", "TP03"]} ,
-						{"MT90": ["Amphi", "TD07"]} 
-					]
-		}	 
+                'CM11-T3',
+                'CM11-D6',
+                'CM11-C',
+                'LA23-D7',
+                'LA23-T6'
+            ]
+		}
 	],
 
 	//Representation criteres
-	[ 
+	[
 		{
 			"Sexe": "Homme" ,
 			"Année de naissance": "1995-2000" ,
@@ -32,10 +35,13 @@ module.exports = [
 			"Sport": "Aviron" ,
 			"Passion": "Lecture" ,
 			"Type de relation": "CDI" ,
-			"UVs": [
-						{"SY02": ["Amphi1", "TD05", "TP03"]} ,
-						{"MT90": ["Amphi", "TD07"]} 
-					]
-		}	 
+            "UVs": [
+                'CM11-T3',
+                'CM11-D6',
+                'CM11-C',
+                'LA23-D7',
+                'LA23-T6'
+            ]
+		}
 	]
 ];
