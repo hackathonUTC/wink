@@ -1,5 +1,5 @@
-var json = $.getJSON("representation.json");
+var json = require("./representation");
 var profile = json[0];
 var criterias = json[1];
 
-alert(profile);
+console.log(profile);

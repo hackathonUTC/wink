@@ -1,5 +1,5 @@
 // Representation profil
-[
+module.exports = [
 	[ 
 		{
 			"Langue": "francais",
@@ -38,4 +38,4 @@
 					]
 		}	 
 	]
-]
+];
