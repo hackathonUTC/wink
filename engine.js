@@ -1,4 +1,5 @@
 var content = require("./representation");
+<<<<<<< HEAD
 
 (function poincarre(tab)
 	var len = tab.length;
@@ -69,4 +70,3 @@ var content = require("./representation");
 )
 
 //console.log(eval(profile));
-

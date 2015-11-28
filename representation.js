@@ -2,18 +2,18 @@ module.exports = [
 	[
         // Representation profil
 		{
-			"Langue": "francais",
-			"Situation amoureuse": "Célibataire" ,
-			"Sexe": "Homme" ,
-			"Date de naissance": "12/02/1995" , // "JJ/MM/AAAA"
-			"Branche": "GI" ,
-			"Semestre": "01" ,
-			"Origine" : "France" ,
-			"Association": "Polar" ,
-			"Sport": "Aviron" ,
-			"Passion": "Lecture" ,
-			"Type de relation": "CDI" ,
-			"UVs": [
+			"language": "francais",
+			"relationshipStatus": "Célibataire" ,
+			"gender": "Homme" ,
+			"birthday": "12/02/1995" , // "JJ/MM/AAAA"
+			"branch": "GI" ,
+			"semester": "01" ,
+			"origin" : "France" ,
+			"association": ["Polar"],
+			"sport": ["Aviron"],
+			"hobby": ["Lecture"],
+			"typeOfRelation": "CDI",
+			"uvs": [
                 'CM11-T3',
                 'CM11-D6',
                 'CM11-C',
@@ -26,16 +26,16 @@ module.exports = [
 	//Representation criteres
 	[
 		{
-			"Sexe": "Homme" ,
-			"Année de naissance": "1995-2000" ,
-			"Branche": "GI" ,
-			"Semestre": "01" ,
-			"Origine" : "France" ,
-			"Association": "Polar" ,
-			"Sport": "Aviron" ,
-			"Passion": "Lecture" ,
-			"Type de relation": "CDI" ,
-            "UVs": [
+			"gender": "Homme" ,
+			"birthday": "1995-2000" ,
+			"branch": "GI" ,
+			"semester": "01" ,
+			"origin" : "France" ,
+			"association": ["Polar"],
+			"sport": ["Aviron"],
+			"hobby": ["Lecture"],
+			"typeOfRelation": "CDI" ,
+			"uvs": [
                 'CM11-T3',
                 'CM11-D6',
                 'CM11-C',
