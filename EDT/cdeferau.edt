@@ -1,0 +1,33 @@
+ ------------------------------------------------------------------------------------------------------------------------------------
+ cdeferau                  TC05       7  SI24     DI01     PS15     TF01     CM05     CM04     FQ01     
+ 
+ 
+ SI24       C      MARDI...  9:00-10:00,F1,S=FA200                                                              
+ SI24       D 1    MARDI... 10:15-12:15,F1,S=FA509                                                              
+ 
+ DI01       C      MARDI... 14:15-16:15,F1,S=FA104                                                              
+ 
+ PS15       C      VENDREDI 10:15-12:15,F1,S=FA106                                                              
+ PS15       D 2    VENDREDI 14:15-16:15,F1,S=FA314                                                              
+ 
+ TF01       C      JEUDI... 10:15-12:15,F1,S=FA100                                                              
+ TF01       D 1    LUNDI... 14:15-16:15,F1,S=FA419                                                              
+ TF01       T 1    LUNDI... 16:30-19:30,F2,S=RD101A                                                             
+ 
+ CM05       C      LUNDI...  8:00-10:00,F1,S=FA100                                                              
+ CM05       D 2    MARDI... 16:30-18:30,F1,S=FA417                                                              
+ 
+ CM04       C      LUNDI... 10:15-12:15,F1,S=FA100                                                              
+ CM04       D 2    VENDREDI  8:00-10:00,F1,S=FA419                                                              
+ 
+ FQ01       C      SAMEDI..  9:00-12:00,F1,S=CT120                                                              
+ FQ01       D 4    VENDREDI 16:30-18:30,F1,S=FA108                                                              
+ 
+
+
+
+
+
+
+ LE SERVICE des MOYENS d'ENSEIGNEMENT VOUS SOUHAITE BON COURAGE
+
