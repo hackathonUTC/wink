@@ -1,21 +1,39 @@
 // Representation profil
 [ 
-	{"Langue": "francais"},
-	{"Situation amoureuse": "Célibataire"},
-	{"Sexe": "Homme"},
-	{"Année de naissance": "1995"},
-	{"Branche": "GI"},
-	{"Semestre": "01"},
-	{"Origine" : "France"},
-	{"Association": "Polar"},
-	{"Sport": "Aviron"},
-	{"Passion": "Lecture"},
-	{"Type de relation": "CDI"},
-	{"UVs": [
-				{"SY02": ["Amphi1", "TD05", "TP03"]},
-				{"MT90": ["Amphi", "TD07"]}
-			]
-	}
+	{
+		"Langue": "francais",
+		"Situation amoureuse": "Célibataire" ,
+		"Sexe": "Homme" ,
+		"Date de naissance": "12/02/1995" , // "JJ/MM/AAAA"
+		"Branche": "GI" ,
+		"Semestre": "01" ,
+		"Origine" : "France" ,
+		"Association": "Polar" ,
+		"Sport": "Aviron" ,
+		"Passion": "Lecture" ,
+		"Type de relation": "CDI" ,
+		"UVs": [
+					{"SY02": ["Amphi1", "TD05", "TP03"]} ,
+					{"MT90": ["Amphi", "TD07"]} 
+				]
+	}	 
 ]
 
-//Representation 
+//Representation criteres
+[ 
+	{
+		"Sexe": "Homme" ,
+		"Année de naissance": "1995-2000" ,
+		"Branche": "GI" ,
+		"Semestre": "01" ,
+		"Origine" : "France" ,
+		"Association": "Polar" ,
+		"Sport": "Aviron" ,
+		"Passion": "Lecture" ,
+		"Type de relation": "CDI" ,
+		"UVs": [
+					{"SY02": ["Amphi1", "TD05", "TP03"]} ,
+					{"MT90": ["Amphi", "TD07"]} 
+				]
+	}	 
+]
