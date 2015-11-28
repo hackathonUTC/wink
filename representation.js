@@ -1,6 +1,6 @@
-// Representation profil
 module.exports = [
-	[ 
+	[
+        // Representation profil
 		{
 			"language": "francais",
 			"relationshipStatus": "Célibataire" ,
@@ -14,14 +14,17 @@ module.exports = [
 			"hobby": ["Lecture"],
 			"typeOfRelation": "CDI",
 			"uvs": [
-						{"SY02": ["amphi1", "TD05", "TP03"]} ,
-						{"MT90": ["amphi", "TD07"]} 
-					]
-		}	 
+                'CM11-T3',
+                'CM11-D6',
+                'CM11-C',
+                'LA23-D7',
+                'LA23-T6'
+            ]
+		}
 	],
 
 	//Representation criteres
-	[ 
+	[
 		{
 			"gender": "Homme" ,
 			"birthday": "1995-2000" ,
@@ -33,9 +36,12 @@ module.exports = [
 			"hobby": ["Lecture"],
 			"typeOfRelation": "CDI" ,
 			"uvs": [
-						{"SY02": ["amphi1", "TD05", "TP03"]} ,
-						{"MT90": ["amphi", "TD07"]} 
-					]
-		}	 
+                'CM11-T3',
+                'CM11-D6',
+                'CM11-C',
+                'LA23-D7',
+                'LA23-T6'
+            ]
+		}
 	]
 ];
