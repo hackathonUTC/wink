@@ -28,9 +28,9 @@ module.exports = [
 			"branch": "GI" ,
 			"semester": "01" ,
 			"origin" : "France" ,
-			"association": ["Polar"] ,
-			"sport": ["Aviron"] ,
-			"hobby": ["Lecture"] ,
+			"association": ["Polar"],
+			"sport": ["Aviron"],
+			"hobby": ["Lecture"],
 			"typeOfRelation": "CDI" ,
 			"uvs": [
 						{"SY02": ["amphi1", "TD05", "TP03"]} ,
