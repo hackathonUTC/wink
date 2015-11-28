@@ -1,8 +1,14 @@
 var content = require("./representation");
-<<<<<<< HEAD
+
+/*
+	A revoir !!!
+
+
+
+*/
 
 (function poincarre(tab)
-	var len = tab.length;
+	/*var len = tab.length;
 
 	var somme1 = 0;
 	var somme2 = 0;
@@ -22,8 +28,24 @@ var content = require("./representation");
 		somme1 += somme2;
 	}
 	return somme1;
+	*/
+	return 0.5;
 )
-(function getMatchingLevel(content) {
+(function getTempMachingLevel( criteriaList, profiletList, n)
+	var tab[];
+	for(var c in criteriaList){
+		for(var p in profiletList){
+			if(c == p){
+				tab.push(n);
+			}
+		}
+	}
+	return poincarre(tab);
+)
+(function getMatchingLevel(content) { 
+	/*
+		Return -1 if it can't match
+	*/
 	var profile = content[0];
 	var criterias = content[1];
 
@@ -60,9 +82,23 @@ var content = require("./representation");
 					if(criterias[criteriaKey]!=profile[profileKey]){
 						return -1;
 					}
-				case "sport"
+				case "birthday":
+					var range = criteria[criteriaKey]
+					var lowerBound = parseInt(str.slice(0,4));
+					var upperBound = parseInt(str.slice(5,9));
 
-
+					if((profile[profileKey]<lowerBound) || (profile[profileKey]>upperBound)){
+						return -1;
+					}
+				case "sport":
+					finalValues.push(getTempMachingLevel(criterias[criteriaKey], profile[profileKey]));
+					break;
+				case "association":
+					finalValues.push(getTempMachingLevel(criterias[criteriaKey], profile[profileKey]));
+					break;
+				case "hobby":
+					finalValues.push(getTempMachingLevel(criterias[criteriaKey], profile[profileKey]));
+					break;
 				}break;
 			}
 		}

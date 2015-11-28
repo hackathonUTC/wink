@@ -34,7 +34,7 @@ module.exports = [
 			"association": ["Polar"],
 			"sport": ["Aviron"],
 			"hobby": ["Lecture"],
-			"typeOfRelation": "CDI" ,
+			"searchRelation": "CDI" ,
 			"uvs": [
                 'CM11-T3',
                 'CM11-D6',
