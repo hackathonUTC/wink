@@ -1,0 +1,31 @@
+ ------------------------------------------------------------------------------------------------------------------------------------
+ melinchl                  GM05       6  TO01     LA01     SY02     LO01     SY10     MQ12     
+ 
+ 
+ TO01       D 1    MARDI... 10:15-12:15,F1,S=FA414                                                              
+ 
+ LA01       D 1    MARDI... 14:15-16:15,F1,S=FB214                                                              
+ LA01       T 1    MERCREDI 13:00-14:00,F1,S=FB214                                                              
+ 
+ SY02       C      MARDI...  8:00-10:00,F1,S=FA201                                                              
+ SY02       D 2    LUNDI... 10:15-12:15,F1,S=FB207                                                              
+ 
+ LO01       C      VENDREDI  8:00-10:00,F1,S=FA100                                                              
+ LO01       D 1    LUNDI...  8:00-10:00,F1,S=FA418                                                              
+ LO01       T 4    JEUDI... 10:15-12:15,F2,S=FB116                                                              
+ 
+ SY10       C      MARDI... 16:30-18:30,F1,S=FA106                                                              
+ SY10       D 1    JEUDI... 14:15-16:15,F1,S=FA317                                                              
+ SY10       T 1    JEUDI... 16:30-18:30,F1,S=FB207                                                              
+ 
+ MQ12       C      MERCREDI 10:15-12:15,F1,S=FA104                                                              
+ MQ12       D 2    JEUDI...  8:00-10:00,F1,S=FA406                                                              
+ 
+
+
+
+
+
+
+ LE SERVICE des MOYENS d'ENSEIGNEMENT VOUS SOUHAITE BON COURAGE
+
