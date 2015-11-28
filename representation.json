@@ -1,0 +1,21 @@
+// Representation profil
+[ 
+	{"Langue": "francais"},
+	{"Situation amoureuse": "Célibataire"},
+	{"Sexe": "Homme"},
+	{"Année de naissance": "1995"},
+	{"Branche": "GI"},
+	{"Semestre": "01"},
+	{"Origine" : "France"},
+	{"Association": "Polar"},
+	{"Sport": "Aviron"},
+	{"Passion": "Lecture"},
+	{"Type de relation": "CDI"},
+	{"UVs": [
+				{"SY02": ["Amphi1", "TD05", "TP03"]},
+				{"MT90": ["Amphi", "TD07"]}
+			]
+	}
+]
+
+//Representation 
