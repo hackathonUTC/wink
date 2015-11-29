@@ -24,7 +24,7 @@ var app = React.createClass({
                         <Image source={{uri: 'http://images5.fanpop.com/image/photos/29000000/Emma-Stone-s-makeup-makeup-29012581-400-400.jpg'}} style={styles.userImage} />
                         <View style={styles.userBio}>
                             <Text style={styles.userName}>
-                                Emma Stone Stone Stone Stone
+                                Emma Stone
                             </Text>
                             <Text style={styles.userAge}>
                                 27 ans - GI06
