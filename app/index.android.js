@@ -8,18 +8,34 @@ var {
     StyleSheet,
     Text,
     View,
+    DrawerLayoutAndroid,
 } = React;
 
 var app = React.createClass({
     render: function() {
-        return (
-            <View style={styles.container}>
+ 
+  var navigationView = (
+    <View style={{flex: 1, backgroundColor: '#fff'}}>
+      <View style={styles.container}>
                 <View style={styles.header}>
                     <Image source={require('./img/logo.png')} style={styles.image} />
                 </View>
             </View>
-        );
-    }
+    </View>
+  );
+  return (
+    <DrawerLayoutAndroid
+      drawerWidth={300}
+      drawerPosition={DrawerLayoutAndroid.positions.Left}
+      renderNavigationView={() => navigationView}>
+      <View style={styles.container}>
+                <View style={styles.header}>
+                    <Image source={require('./img/logo.png')} style={styles.image} />
+                </View>
+            </View>
+    </DrawerLayoutAndroid>
+  );
+},
 });
 
 var styles = StyleSheet.create({
