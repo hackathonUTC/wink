@@ -180,3 +180,233 @@ ERROR:  column "login" of relation "users" does not exist at character 19
 STATEMENT:  INSERT INTO users(login) values($1)
 ERROR:  column "login" of relation "users" does not exist at character 19
 STATEMENT:  INSERT INTO users(login) values($1)
+ERROR:  column "id" does not exist at character 206
+STATEMENT:  UPDATE users SET firstname=($1), lastname=($2), branch=($3), gender=($4), language=($5), relationshipStatus=($6), birthday=($7), semester=($8), typeOfRelation=($9), sexualPref=($10), origin_id=($11) WHERE id=($12)
+ERROR:  column "id" does not exist at character 206
+STATEMENT:  UPDATE users SET firstname=($1), lastname=($2), branch=($3), gender=($4), language=($5), relationshipStatus=($6), birthday=($7), semester=($8), typeOfRelation=($9), sexualPref=($10), origin_id=($11) WHERE id=($12)
+ERROR:  column "id" does not exist at character 206
+STATEMENT:  UPDATE users SET firstname=($1), lastname=($2), branch=($3), gender=($4), language=($5), relationshipStatus=($6), birthday=($7), semester=($8), typeOfRelation=($9), sexualPref=($10), origin_id=($11) WHERE id=($12)
+ERROR:  syntax error at or near "(" at character 36
+STATEMENT:  CREATE TABLE users (
+	user_idVARCHAR(8)NOT NULL PRIMARY KEY,
+	firstnameVARCHAR(50),
+	lastnameVARCHAR(50),
+	branchVARCHAR(5),
+	genderVARCHAR(1) CHECK (gender IN('m', 'f', 'a')),
+	languageVARCHAR(20),
+	relationshipStatusVARCHAR(20)CHECK (relationshipStatus IN ('single','married','in a relationship', 'complicated')) ,
+	birthdayDATE,
+	semesterINTEGER,
+	typeOfRelationVARCHAR(6)CHECK (typeOfRelation IN ('cdi', 'cdd', 'trial')),
+	sexualPref VARCHAR(1)CHECK (sexualPref IN ('m', 'f', 'a')),
+	pictureVARCHAR(100),
+	origin_idINTEGERREFERENCES origins(origin_id)
+	);
+ERROR:  relation "origins" already exists
+STATEMENT:  CREATE TABLE origins (
+		origin_id 	SERIAL 	NOT NULL PRIMARY KEY,
+		name		VARCHAR(50) NOT NULL
+	);
+ERROR:  relation "users" already exists
+STATEMENT:  CREATE TABLE users (
+		user_id				VARCHAR(8)	NOT NULL PRIMARY KEY,
+		firstname			VARCHAR(50),
+		lastname			VARCHAR(50),
+		branch				VARCHAR(5),
+		gender				VARCHAR(1) 	CHECK (gender IN('m', 'f', 'a')),
+		language			VARCHAR(20),
+		relationshipStatus	VARCHAR(20)	CHECK (relationshipStatus IN ('single','married','in a relationship', 'complicated')) ,
+		birthday			DATE,
+		semester			INTEGER,
+		typeOfRelation		VARCHAR(6)	CHECK (typeOfRelation IN ('cdi', 'cdd', 'trial')),
+		sexualPref		 	VARCHAR(1)	CHECK (sexualPref IN ('m', 'f', 'a')),
+		picture				VARCHAR(100),
+		origin_id			INTEGER	REFERENCES origins(origin_id)
+	);
+ERROR:  relation "tokens" already exists
+STATEMENT:  CREATE TABLE tokens (
+		user_id		VARCHAR(8) 	NOT NULL REFERENCES users(user_id),
+		token		VARCHAR(50)	NOT NULL,
+		expire_at	DATE		NOT NULL
+	);
+ERROR:  relation "user_swipe" already exists
+STATEMENT:  CREATE TABLE user_swipe (
+		userFrom_id	VARCHAR(8)	NOT NULL REFERENCES users(user_id),
+		userTo_id	VARCHAR(8)	NOT NULL REFERENCES users(user_id),
+		type	 	CHAR(1) NOT NULL CHECK (type IN ('l','r'))
+	);
+ERROR:  relation "hobbies" already exists
+STATEMENT:  CREATE TABLE hobbies (
+		hobby_id	SERIAL 	NOT NULL PRIMARY KEY,
+		name 		VARCHAR(50) NOT NULL
+	);
+ERROR:  relation "user_hobby" already exists
+STATEMENT:  CREATE TABLE user_hobby (
+		user_id 	VARCHAR(8) NOT NULL REFERENCES users(user_id),
+		hobby_id	INTEGER NOT NULL REFERENCES hobbies(hobby_id)
+	);
+ERROR:  relation "organizations" already exists
+STATEMENT:  CREATE TABLE organizations (
+		organization_id	SERIAL	 	NOT NULL PRIMARY KEY,
+		name 			VARCHAR(50) NOT NULL
+	);
+ERROR:  relation "user_organization" already exists
+STATEMENT:  CREATE TABLE user_organization (
+		user_id			VARCHAR(8) NOT NULL REFERENCES users(user_id),
+		organization_id	INTEGER NOT NULL REFERENCES organizations(organization_id)
+	);
+ERROR:  relation "sports" already exists
+STATEMENT:  CREATE TABLE sports (
+		sport_id	SERIAL	 	NOT NULL PRIMARY KEY,
+		name 		VARCHAR(50) NOT NULL
+	);
+ERROR:  relation "user_sport" already exists
+STATEMENT:  CREATE TABLE user_sport (
+		user_id		VARCHAR(8) NOT NULL REFERENCES users(user_id),
+		sport_id 	INTEGER NOT NULL REFERENCES organizations(organization_id)
+	);
+ERROR:  relation "courses" already exists
+STATEMENT:  CREATE TABLE courses (
+		course_id	SERIAL	 	NOT NULL PRIMARY KEY,
+		name 		VARCHAR(50) NOT NULL
+	);
+ERROR:  relation "user_course" already exists
+STATEMENT:  CREATE TABLE user_course (
+		user_id 	VARCHAR(8) NOT NULL REFERENCES users(user_id),
+		course_id	INTEGER NOT NULL REFERENCES courses(course_id)
+	);
+ERROR:  cannot drop table users because other objects depend on it
+DETAIL:  constraint tokens_user_id_fkey on table tokens depends on table users
+	constraint user_swipe_userfrom_id_fkey on table user_swipe depends on table users
+	constraint user_swipe_userto_id_fkey on table user_swipe depends on table users
+	constraint user_hobby_user_id_fkey on table user_hobby depends on table users
+	constraint user_organization_user_id_fkey on table user_organization depends on table users
+	constraint user_sport_user_id_fkey on table user_sport depends on table users
+	constraint user_course_user_id_fkey on table user_course depends on table users
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  drop table users;
+ERROR:  relation "origins" already exists
+STATEMENT:  CREATE TABLE origins (
+		origin_id 	SERIAL 	NOT NULL PRIMARY KEY,
+		name		VARCHAR(50) NOT NULL
+	);
+ERROR:  relation "tokens" already exists
+STATEMENT:  CREATE TABLE tokens (
+		user_id		VARCHAR(8) 	NOT NULL REFERENCES users(user_id),
+		token		VARCHAR(50)	NOT NULL,
+		expire_at	DATE		NOT NULL
+	);
+ERROR:  relation "user_swipe" already exists
+STATEMENT:  CREATE TABLE user_swipe (
+		userFrom_id	VARCHAR(8)	NOT NULL REFERENCES users(user_id),
+		userTo_id	VARCHAR(8)	NOT NULL REFERENCES users(user_id),
+		type	 	CHAR(1) NOT NULL CHECK (type IN ('l','r'))
+	);
+ERROR:  relation "hobbies" already exists
+STATEMENT:  CREATE TABLE hobbies (
+		hobby_id	SERIAL 	NOT NULL PRIMARY KEY,
+		name 		VARCHAR(50) NOT NULL
+	);
+ERROR:  relation "user_hobby" already exists
+STATEMENT:  CREATE TABLE user_hobby (
+		user_id 	VARCHAR(8) NOT NULL REFERENCES users(user_id),
+		hobby_id	INTEGER NOT NULL REFERENCES hobbies(hobby_id)
+	);
+ERROR:  relation "organizations" already exists
+STATEMENT:  CREATE TABLE organizations (
+		organization_id	SERIAL	 	NOT NULL PRIMARY KEY,
+		name 			VARCHAR(50) NOT NULL
+	);
+ERROR:  relation "user_organization" already exists
+STATEMENT:  CREATE TABLE user_organization (
+		user_id			VARCHAR(8) NOT NULL REFERENCES users(user_id),
+		organization_id	INTEGER NOT NULL REFERENCES organizations(organization_id)
+	);
+ERROR:  relation "sports" already exists
+STATEMENT:  CREATE TABLE sports (
+		sport_id	SERIAL	 	NOT NULL PRIMARY KEY,
+		name 		VARCHAR(50) NOT NULL
+	);
+ERROR:  relation "user_sport" already exists
+STATEMENT:  CREATE TABLE user_sport (
+		user_id		VARCHAR(8) NOT NULL REFERENCES users(user_id),
+		sport_id 	INTEGER NOT NULL REFERENCES organizations(organization_id)
+	);
+ERROR:  relation "courses" already exists
+STATEMENT:  CREATE TABLE courses (
+		course_id	SERIAL	 	NOT NULL PRIMARY KEY,
+		name 		VARCHAR(50) NOT NULL
+	);
+ERROR:  relation "user_course" already exists
+STATEMENT:  CREATE TABLE user_course (
+		user_id 	VARCHAR(8) NOT NULL REFERENCES users(user_id),
+		course_id	INTEGER NOT NULL REFERENCES courses(course_id)
+	);
+ERROR:  null value in column "user_id" violates not-null constraint
+DETAIL:  Failing row contains (null, null, null, null, null, null, null, null, null, null, null, null, null).
+STATEMENT:  INSERT INTO users(user_id) values($1)
+ERROR:  null value in column "user_id" violates not-null constraint
+DETAIL:  Failing row contains (null, null, null, null, null, null, null, null, null, null, null, null, null).
+STATEMENT:  INSERT INTO users(user_id) values($1)
+ERROR:  table "user_hobbies" does not exist
+STATEMENT:  drop table user_hobbies cascade;
+ERROR:  table "user_swipe" does not exist
+STATEMENT:  drop table user_swipe cascade;
+ERROR:  table "course" does not exist
+STATEMENT:  drop table course cascade;
+ERROR:  null value in column "user_id" violates not-null constraint
+DETAIL:  Failing row contains (null, null, null, null, null, null, null, null, null, null, null, null, null).
+STATEMENT:  INSERT INTO users(user_id) values($1)
+ERROR:  null value in column "user_id" violates not-null constraint
+DETAIL:  Failing row contains (null, null, null, null, null, null, null, null, null, null, null, null, null).
+STATEMENT:  INSERT INTO users(user_id) values($1)
+ERROR:  null value in column "user_id" violates not-null constraint
+DETAIL:  Failing row contains (null, null, null, null, null, null, null, null, null, null, null, null, null).
+STATEMENT:  INSERT INTO users(user_id) values($1)
+ERROR:  column "login" of relation "users" does not exist at character 19
+STATEMENT:  INSERT INTO users(login) VALUES ('rothibau');
+ERROR:  null value in column "user_id" violates not-null constraint
+DETAIL:  Failing row contains (null, null, null, null, null, null, null, null, null, null, null, null, null).
+STATEMENT:  INSERT INTO users(user_id) values($1)
+ERROR:  null value in column "user_id" violates not-null constraint
+DETAIL:  Failing row contains (null, null, null, null, null, null, null, null, null, null, null, null, null).
+STATEMENT:  INSERT INTO users(user_id) values($1)
+ERROR:  could not determine data type of parameter $2
+STATEMENT:  UPDATE users SET firstname=$1 WHERE user_id=$12;
+ERROR:  could not determine data type of parameter $2
+STATEMENT:  UPDATE users SET firstname=$1 WHERE user_id=$12;
+ERROR:  syntax error at or near "=" at character 144
+STATEMENT:  UPDATE users SET (firstname, lastname, branch, gender, language, relationshipStatus, birthday, semester, typeOfRelation, sexualPref, origin_id = ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) WHERE user_id=$12;
+ERROR:  null value in column "user_id" violates not-null constraint
+DETAIL:  Failing row contains (null, null, null, null, null, null, null, null, null, null, null, null, null).
+STATEMENT:  INSERT INTO users(user_id) values($1)
+ERROR:  null value in column "user_id" violates not-null constraint
+DETAIL:  Failing row contains (null, null, null, null, null, null, null, null, null, null, null, null, null).
+STATEMENT:  INSERT INTO users(user_id) values($1)
+ERROR:  null value in column "user_id" violates not-null constraint
+DETAIL:  Failing row contains (null, null, null, null, null, null, null, null, null, null, null, null, null).
+STATEMENT:  INSERT INTO users(user_id) values($1)
+ERROR:  duplicate key value violates unique constraint "users_pkey"
+DETAIL:  Key (user_id)=(rothibau) already exists.
+STATEMENT:  INSERT INTO users(user_id) values($1)
+ERROR:  invalid input syntax for type date: ""
+STATEMENT:  UPDATE users SET firstname=$1, lastname=$2, branch=$3, gender=$4, language=$5, relationshipStatus=$6, birthday=$7, semester=$8, typeOfRelation=$9, sexualPref=$10, origin_id=$11 WHERE user_id=$12;
+ERROR:  could not determine data type of parameter $10
+STATEMENT:  UPDATE users SET firstname = ($1), lastname = ($2), branch = ($3), gender = ($4), language = ($5), relationshipStatus = ($6), semester = ($7), typeOfRelation = ($8), sexualPref = ($9), origin_id = ($12) WHERE user_id=($11);
+ERROR:  could not determine data type of parameter $10
+STATEMENT:  UPDATE users SET firstname = ($1), lastname = ($2), branch = ($3), gender = ($4), language = ($5), relationshipStatus = ($6), semester = ($7), typeOfRelation = ($8), sexualPref = ($9), origin_id = ($12) WHERE user_id=($11);
+ERROR:  could not determine data type of parameter $10
+STATEMENT:  UPDATE users SET firstname = ($1), lastname = ($2), branch = ($3), gender = ($4), language = ($5), relationshipStatus = ($6), semester = ($7), typeOfRelation = ($8), sexualPref = ($9), origin_id = ($12) WHERE user_id=($11);
+ERROR:  could not determine data type of parameter $10
+STATEMENT:  UPDATE users SET firstname = ($1), lastname = ($2), branch = ($3), gender = ($4), language = ($5), relationshipStatus = ($6), semester = ($7), typeOfRelation = ($8), sexualPref = ($9), origin_id = ($12) WHERE user_id=($11);
+ERROR:  insert or update on table "users" violates foreign key constraint "users_origin_id_fkey"
+DETAIL:  Key (origin_id)=(1) is not present in table "origins".
+STATEMENT:  UPDATE users SET firstname = ($1), lastname = ($2), branch = ($3), gender = ($4), language = ($5), relationshipStatus = ($6), semester = ($7), typeOfRelation = ($8), sexualPref = ($9), origin_id = ($10) WHERE user_id=($11);
+ERROR:  insert or update on table "users" violates foreign key constraint "users_origin_id_fkey"
+DETAIL:  Key (origin_id)=(1) is not present in table "origins".
+STATEMENT:  UPDATE users SET firstname = ($1), lastname = ($2), branch = ($3), gender = ($4), language = ($5), relationshipStatus = ($6), semester = ($7), typeOfRelation = ($8), sexualPref = ($9), origin_id = ($10) WHERE user_id=($11);
+ERROR:  insert or update on table "users" violates foreign key constraint "users_origin_id_fkey"
+DETAIL:  Key (origin_id)=(1) is not present in table "origins".
+STATEMENT:  UPDATE users SET firstname = ($1), lastname = ($2), branch = ($3), gender = ($4), language = ($5), relationshipStatus = ($6), semester = ($7), typeOfRelation = ($8), sexualPref = ($9), origin_id = ($10) WHERE user_id = ($11);
+ERROR:  relation "origin" does not exist at character 15
+STATEMENT:  select * from origin;

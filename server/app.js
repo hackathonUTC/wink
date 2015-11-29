@@ -1,29 +1,21 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
-var router = express.Router();
 
 var path = require('path');
 var pg = require('pg');
 
 var conString = "postgres://tyrius@localhost:5432/winkdev";
 
-router.use(function (req,res,next) {
-  console.log("/" + req.method);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:false}));
+
+app.use(function (req,res,next) {
+  console.log("/" + req.method + " - " + JSON.stringify(req.body));
   next();
 });
 
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
-var jsonParser = bodyParser.json();
-
-/* GET home page. */
-router.get('/', function(req, res) {
-	res.json({"message": "test", "req": req.body});
-});
-
-router.post('/api/newuser', jsonParser, function(req, res) {
-	console.log('api/newuser/', req.body.login);
-
+app.post('/api/users/new', function(req, res) {
     var results = [];
 
     // Get a Postgres client from the connection pool
@@ -36,10 +28,10 @@ router.post('/api/newuser', jsonParser, function(req, res) {
         }
 
         // SQL Query > Insert Data
-        client.query("INSERT INTO users(user_id) values($1)", [req.body.login]);
+        client.query("INSERT INTO users(user_id) values($1)", [req.body.user_id]);
 
         // SQL Query > Select Data
-        var query = client.query("SELECT * FROM users WHERE user_id=$1",[req.body.login]);
+        var query = client.query("SELECT * FROM users WHERE user_id=$1",[req.body.user_id]);
 
         // Stream results back one row at a time
         query.on('row', function(row) {
@@ -54,7 +46,7 @@ router.post('/api/newuser', jsonParser, function(req, res) {
     });
 });
 
-router.put('/api/user', jsonParser, function(req, res) {
+app.put('/api/users/modify', function(req, res) {
     var results = [];
 
     // Get a Postgres client from the connection pool
@@ -67,10 +59,10 @@ router.put('/api/user', jsonParser, function(req, res) {
         }
 
         // SQL Query > Insert Data
-		client.query("UPDATE users SET firstname=($1), lastname=($2), branch=($3), gender=($4), language=($5), relationshipStatus=($6), birthday=($6), semester=($7), typeOfRelation=($8), sexualPref=($9), origin_id=($10) WHERE id=($11)", [req.body[0].firstname, req.body[0].lastname, req.body[0].branch, req.body[0].gender, req.body[0].language, req.body[0].relationshipStatus, req.body[0].birthday, req.body[0].semester, req.body[0].typeOfRelation, req.body[0].sexualPref, req.body[0].origin.origin_id, req.body[0].user_id]);
+		client.query("UPDATE users SET firstname = ($1), lastname = ($2), branch = ($3), gender = ($4), language = ($5), relationshipStatus = ($6), semester = ($7), typeOfRelation = ($8), sexualPref = ($9), origin_id = ($10) WHERE user_id = ($11);", [req.body.firstname, req.body.lastname, req.body.branch, req.body.gender, req.body.language, req.body.relationshipStatus, req.body.semester, req.body.typeOfRelation, req.body.sexualPref, req.body.origin_id, req.body.user_id]);
 
         // SQL Query > Select Data
-        var query = client.query("SELECT * FROM users WHERE user_id=$1",[req.body[0].user_id]);
+        var query = client.query("SELECT * FROM users WHERE user_id=$1",[req.body.user_id]);
 
         // Stream results back one row at a time
         query.on('row', function(row) {
@@ -87,9 +79,9 @@ router.put('/api/user', jsonParser, function(req, res) {
 
 
 // get all countries
-router.get('/api/countries', function(req, res) {
+app.get('/api/countries', function(req, res) {
 	var results = [];
-
+	console.log(req.body.firstname);
 	// Get a Postgres client from the connection pool
 	pg.connect(conString, function(err, client, done) {
 		// Handle connection errors
@@ -114,8 +106,5 @@ router.get('/api/countries', function(req, res) {
 		});
 	});
 });
-
-
-app.use("/", router);
 
 module.exports = app;

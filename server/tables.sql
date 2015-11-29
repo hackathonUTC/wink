@@ -9,13 +9,13 @@ CREATE TABLE users (
 	firstname			VARCHAR(50),
 	lastname			VARCHAR(50),
 	branch				VARCHAR(5),
-	gender				CHAR(1) 	CHECK (gender IN('m', 'f', 'a')),
+	gender				VARCHAR(1) 	CHECK (gender IN('m', 'f', 'a')),
 	language			VARCHAR(20),
 	relationshipStatus	VARCHAR(20)	CHECK (relationshipStatus IN ('single','married','in a relationship', 'complicated')) ,
 	birthday			DATE,
 	semester			INTEGER,
 	typeOfRelation		VARCHAR(6)	CHECK (typeOfRelation IN ('cdi', 'cdd', 'trial')),
-	sexualPref		 	VARCHAR(6)	CHECK (sexualPref IN ('m', 'f', 'a')),
+	sexualPref		 	VARCHAR(1)	CHECK (sexualPref IN ('m', 'f', 'a')),
 	picture				VARCHAR(100),
 	origin_id			INTEGER	REFERENCES origins(origin_id)
 );
