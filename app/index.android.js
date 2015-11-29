@@ -8,42 +8,60 @@ var {
     StyleSheet,
     Text,
     View,
+    DrawerLayoutAndroid,
 } = React;
 
 var app = React.createClass({
-    render: function() {
+    renderMenu: function() {
         return (
-            <View style={styles.container}>
-                <View style={styles.header}>
-                    <Image source={require('./img/icons/menu.png')} style={styles.headerMenuIcon} />
-                    <Image source={require('./img/logo.png')} style={styles.headerLogo} />
-                    <Image source={require('./img/icons/shots.png')} style={styles.headerShotsIcon} />
-                </View>
-                <View style={styles.main}>
-                    <View style={styles.user}>
-                        <Image source={{uri: 'http://images5.fanpop.com/image/photos/29000000/Emma-Stone-s-makeup-makeup-29012581-400-400.jpg'}} style={styles.userImage} />
-                        <View style={styles.userBio}>
-                            <Text style={styles.userName}>
-                                Emma Stone
-                            </Text>
-                            <Text style={styles.userAge}>
-                                27 ans - GI06
-                            </Text>
-                        </View>
-                    </View>
-
-                    <View style={styles.actions}>
-                        <View style={styles.actionChapButton}>
-                            <Image source={require('./img/icons/cross.png')} style={styles.actionChapImage} />
-                            <Text style={styles.actionButton}>Chap</Text>
-                        </View>
-                        <View style={styles.actionShotgunButton}>
-                            <Image source={require('./img/icons/shotgun.png')} style={styles.actionShotgunImage} />
-                            <Text style={styles.actionButton}>Shotgun</Text>
-                        </View>
+            <View style={{flex: 1, backgroundColor: '#fff'}}>
+                <View style={styles.container}>
+                    <View style={styles.header}>
+                        <Image source={require('./img/logo.png')} style={styles.headerLogo} />
                     </View>
                 </View>
             </View>
+        );
+    },
+
+    render: function() {
+        return (
+            <DrawerLayoutAndroid
+                drawerWidth={300}
+                drawerPosition={DrawerLayoutAndroid.positions.Left}
+                renderNavigationView={this.renderMenu}>
+                <View style={styles.container}>
+                    <View style={styles.header}>
+                        <Image source={require('./img/icons/menu.png')} style={styles.headerMenuIcon} />
+                        <Image source={require('./img/logo.png')} style={styles.headerLogo} />
+                        <Image source={require('./img/icons/shots.png')} style={styles.headerShotsIcon} />
+                    </View>
+                    <View style={styles.main}>
+                        <View style={styles.user}>
+                            <Image source={{uri: 'http://images5.fanpop.com/image/photos/29000000/Emma-Stone-s-makeup-makeup-29012581-400-400.jpg'}} style={styles.userImage} />
+                            <View style={styles.userBio}>
+                                <Text style={styles.userName}>
+                                    Emma Stone
+                                </Text>
+                                <Text style={styles.userAge}>
+                                    27 ans - GI06
+                                </Text>
+                            </View>
+                        </View>
+
+                        <View style={styles.actions}>
+                            <View style={styles.actionChapButton}>
+                                <Image source={require('./img/icons/cross.png')} style={styles.actionChapImage} />
+                                <Text style={styles.actionButton}>Chap</Text>
+                            </View>
+                            <View style={styles.actionShotgunButton}>
+                                <Image source={require('./img/icons/shotgun.png')} style={styles.actionShotgunImage} />
+                                <Text style={styles.actionButton}>Shotgun</Text>
+                            </View>
+                        </View>
+                    </View>
+                </View>
+            </DrawerLayoutAndroid>
         );
     }
 });
