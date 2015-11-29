@@ -1,0 +1,182 @@
+LOG:  database system was shut down at 2015-11-29 03:26:20 CET
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  role "wink-user" does not exist
+STATEMENT:  CREATE DATABASE "wink-dev" OWNER "wink-user" ENCODING 'utf8';
+ERROR:  syntax error at or near "-" at character 38
+STATEMENT:  GRANT ALL PRIVILEGES ON DATABASE wink-dev TO tyrius;
+ERROR:  syntax error at or near "sexualPref" at character 487
+STATEMENT:  CREATE TABLE users (
+		user_id				INTEGER		NOT NULL PRIMARY KEY,
+		login				VARCHAR(8)	NOT NULL,
+		firstname			VARCHAR(50),
+		lastname			VARCHAR(50),
+		branch				VARCHAR(5),
+		gender				CHAR(1) 	CHECK (gender IN('m', 'f', 'a')),
+		language			VARCHAR(20),
+		relationshipStatus	VARCHAR(20)	CHECK (relationshipStatus IN ('single','married','in a relationship', 'complicated')) ,
+		birthday			DATE,
+		semester			INTEGER,
+		typeOfRelation		VARCHAR(6)	CHECK (typeOfRelation IN ('cdi', 'cdd', 'trial'))
+		sexualPref		 	VARCHAR(6)		CHECK (sexualPref IN ('m', 'f', 'a')),
+		picture				VARCHAR(100),
+		origin_id			INTEGER	REFERENCES origins(origin_id)
+	);
+ERROR:  relation "users" does not exist
+STATEMENT:  CREATE TABLE tokens (
+		token_id	INTEGER		NOT NULL PRIMARY KEY,
+		user_id		INTEGER 	NOT NULL REFERENCES users(user_id),
+		token		VARCHAR(50)	NOT NULL,
+		expire_at	DATE		NOT NULL
+	);
+ERROR:  relation "users" does not exist
+STATEMENT:  CREATE TABLE swipe_user (
+		swipe_id	INTEGER NOT NULL PRIMARY KEY,
+		user1_id	INTEGER	NOT NULL REFERENCES users(user_id),
+		user2_id	INTEGER	NOT NULL REFERENCES users(user_id),
+		type	 	CHAR(1) NOT NULL CHECK (type IN ('l','r'))
+	);
+ERROR:  relation "users" does not exist
+STATEMENT:  CREATE TABLE user_hobby (
+		user_id 	INTEGER NOT NULL REFERENCES users(user_id),
+		hobby_id	INTEGER NOT NULL REFERENCES hobbies(hobby_id)
+	);
+ERROR:  relation "users" does not exist
+STATEMENT:  CREATE TABLE user_organization (
+		user_id			INTEGER NOT NULL REFERENCES users(user_id),
+		organization_id	INTEGER NOT NULL REFERENCES organizations(organization_id)
+	);
+ERROR:  relation "users" does not exist
+STATEMENT:  CREATE TABLE user_sport (
+		user_id		INTEGER NOT NULL REFERENCES users(user_id),
+		sport_id 	INTEGER NOT NULL REFERENCES organizations(organization_id)
+	);
+ERROR:  relation "users" does not exist
+STATEMENT:  CREATE TABLE user_course (
+		user_id 	INTEGER NOT NULL REFERENCES users(user_id),
+		course_id	INTEGER NOT NULL REFERENCES courses(course_id)
+	);
+ERROR:  syntax error at or near "|" at character 1
+STATEMENT:  |
+	DROP TABLE courses;
+ERROR:  syntax error at or near "NOT" at character 38
+STATEMENT:  CREATE TABLE tokens (
+	user_idINTEGER NOT NULL REFERENCES users(user_id),
+	tokenVARCHAR(50)NOT NULL,
+	expire_atDATENOT NULL
+	);
+ERROR:  relation "origins" already exists
+STATEMENT:  CREATE TABLE origins (
+		origin_id 	INTEGER 	NOT NULL PRIMARY KEY,
+		name		VARCHAR(50) NOT NULL
+	);
+ERROR:  relation "users" already exists
+STATEMENT:  CREATE TABLE users (
+		user_id				INTEGER		NOT NULL PRIMARY KEY,
+		login				VARCHAR(8)	NOT NULL,
+		firstname			VARCHAR(50),
+		lastname			VARCHAR(50),
+		branch				VARCHAR(5),
+		gender				CHAR(1) 	CHECK (gender IN('m', 'f', 'a')),
+		language			VARCHAR(20),
+		relationshipStatus	VARCHAR(20)	CHECK (relationshipStatus IN ('single','married','in a relationship', 'complicated')) ,
+		birthday			DATE,
+		semester			INTEGER,
+		typeOfRelation		VARCHAR(6)	CHECK (typeOfRelation IN ('cdi', 'cdd', 'trial')),
+		sexualPref		 	VARCHAR(6)	CHECK (sexualPref IN ('m', 'f', 'a')),
+		picture				VARCHAR(100),
+		origin_id			INTEGER	REFERENCES origins(origin_id)
+	);
+ERROR:  relation "hobbies" already exists
+STATEMENT:  CREATE TABLE hobbies (
+		hobby_id	INTEGER 	NOT NULL PRIMARY KEY,
+		name 		VARCHAR(50) NOT NULL
+	);
+ERROR:  relation "user_hobby" already exists
+STATEMENT:  CREATE TABLE user_hobby (
+		user_id 	INTEGER NOT NULL REFERENCES users(user_id),
+		hobby_id	INTEGER NOT NULL REFERENCES hobbies(hobby_id)
+	);
+ERROR:  relation "organizations" already exists
+STATEMENT:  CREATE TABLE organizations (
+		organization_id	INTEGER 	NOT NULL PRIMARY KEY,
+		name 			VARCHAR(50) NOT NULL
+	);
+ERROR:  relation "user_organization" already exists
+STATEMENT:  CREATE TABLE user_organization (
+		user_id			INTEGER NOT NULL REFERENCES users(user_id),
+		organization_id	INTEGER NOT NULL REFERENCES organizations(organization_id)
+	);
+ERROR:  relation "sports" already exists
+STATEMENT:  CREATE TABLE sports (
+		sport_id	INTEGER 	NOT NULL PRIMARY KEY,
+		name 		VARCHAR(50) NOT NULL
+	);
+ERROR:  relation "user_sport" already exists
+STATEMENT:  CREATE TABLE user_sport (
+		user_id		INTEGER NOT NULL REFERENCES users(user_id),
+		sport_id 	INTEGER NOT NULL REFERENCES organizations(organization_id)
+	);
+ERROR:  relation "courses" already exists
+STATEMENT:  CREATE TABLE courses (
+		course_id	INTEGER 	NOT NULL PRIMARY KEY,
+		name 		VARCHAR(50) NOT NULL
+	);
+ERROR:  relation "user_course" already exists
+STATEMENT:  CREATE TABLE user_course (
+		user_id 	INTEGER NOT NULL REFERENCES users(user_id),
+		course_id	INTEGER NOT NULL REFERENCES courses(course_id)
+	);
+ERROR:  column "test" does not exist at character 33
+STATEMENT:  insert into users(login) values(test);
+ERROR:  column "test" does not exist at character 33
+STATEMENT:  insert into users(login) values("test");
+ERROR:  null value in column "user_id" violates not-null constraint
+DETAIL:  Failing row contains (null, test, null, null, null, null, null, null, null, null, null, null, null, null).
+STATEMENT:  insert into users(login) values('test');
+ERROR:  cannot drop table courses because other objects depend on it
+DETAIL:  constraint user_course_course_id_fkey on table user_course depends on table courses
+HINT:  Use DROP ... CASCADE to drop the dependent objects too.
+STATEMENT:  drop table courses;
+ERROR:  bind message supplies 5 parameters, but prepared statement "" requires 1
+STATEMENT:  INSERT INTO users(login) values($1)
+ERROR:  bind message supplies 5 parameters, but prepared statement "" requires 1
+STATEMENT:  INSERT INTO users(login) values($1)
+ERROR:  bind message supplies 5 parameters, but prepared statement "" requires 1
+STATEMENT:  INSERT INTO users(login) values($1)
+ERROR:  relation "origin" does not exist at character 13
+STATEMENT:  insert into origin(name) values('France');
+ERROR:  relation "origin" does not exist at character 15
+STATEMENT:  SELECT * FROM origin ORDER BY id ASC;
+ERROR:  column "id" does not exist at character 32
+STATEMENT:  SELECT * FROM origins ORDER BY id ASC;
+ERROR:  null value in column "login" violates not-null constraint
+DETAIL:  Failing row contains (3, null, null, null, null, null, null, null, null, null, null, null, null, null).
+STATEMENT:  INSERT INTO users(login) values($1)
+ERROR:  database "winkdev" already exists
+STATEMENT:  CREATE DATABASE winkdev ENCODING 'utf8';
+ERROR:  syntax error at or near ":" at character 24
+STATEMENT:  drop database winkdev 
+	:
+	;
+ERROR:  database "winkdev" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  drop database winkdev;
+ERROR:  database "winkdev" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  drop database winkdev;
+ERROR:  database "winkdev" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE winkdev;
+ERROR:  database "winkdev" is being accessed by other users
+DETAIL:  There is 1 other session using the database.
+STATEMENT:  DROP DATABASE winkdev;
+FATAL:  database "tyrius" does not exist
+FATAL:  database "tyrius" does not exist
+ERROR:  syntax error at or near "user" at character 12
+STATEMENT:  drop table user cascade;
+ERROR:  column "login" of relation "users" does not exist at character 19
+STATEMENT:  INSERT INTO users(login) values($1)
+ERROR:  column "login" of relation "users" does not exist at character 19
+STATEMENT:  INSERT INTO users(login) values($1)
