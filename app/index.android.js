@@ -31,6 +31,17 @@ var app = React.createClass({
                             </Text>
                         </View>
                     </View>
+
+                    <View style={styles.actions}>
+                        <View style={styles.actionChapButton}>
+                            <Image source={require('./img/icons/cross.png')} style={styles.actionChapImage} />
+                            <Text style={styles.actionButton}>Chap</Text>
+                        </View>
+                        <View style={styles.actionShotgunButton}>
+                            <Image source={require('./img/icons/shotgun.png')} style={styles.actionShotgunImage} />
+                            <Text style={styles.actionButton}>Shotgun</Text>
+                        </View>
+                    </View>
                 </View>
             </View>
         );
@@ -82,21 +93,48 @@ var styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     userBio: {
-        flexDirection: 'column',
+        flexDirection: 'column'
     },
     userImage: {
-        width: 150,
-        height: 150,
-        marginRight: 20
+        width: 200,
+        height: 200,
+        marginRight: 15
     },
     userName: {
         fontWeight: 'bold',
         fontSize: 20,
-        marginTop: 10
-        
+        marginTop: 10,
+        width: 165
     },
     userAge: {
         fontSize: 15,
+        marginTop: 10,
+        width: 165
+    },
+    actions: {
+        flexDirection: 'row',
+        marginRight: 10,
+        marginLeft: 10
+    },
+    actionChapButton: {
+        flex: 1,
+        backgroundColor: '#d7525b',
+        alignItems: 'center',
+        paddingTop: 10,
+        paddingBottom: 15,
+        marginRight: 5
+    },
+    actionShotgunButton: {
+        flex: 1,
+        backgroundColor: '#32af9e',
+        alignItems: 'center',
+        paddingTop: 10,
+        paddingBottom: 15,
+        marginLeft: 5
+    },
+    actionButton: {
+        fontSize: 18,
+        color: '#ffffff',
         marginTop: 10
     }
 });
