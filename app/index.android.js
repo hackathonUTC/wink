@@ -21,6 +21,14 @@ var app = React.createClass({
         this.refs['right_drawer'].openDrawer();
     },
 
+    clickChapButton: function() {
+        // TODO
+    },
+
+    clickShotgunButton: function() {
+        // TODO
+    },
+
     renderLeftMenu: function() {
         return (
             <View style={{flex: 1, backgroundColor: '#fff'}}>
@@ -84,28 +92,36 @@ var app = React.createClass({
                             </TouchableNativeFeedback>
                         </View>
                         <View style={styles.main}>
-                            <View style={styles.user}>
-                                <Image source={{uri: 'http://images5.fanpop.com/image/photos/29000000/Emma-Stone-s-makeup-makeup-29012581-400-400.jpg'}} style={styles.userImage} />
-                                <View style={styles.userBio}>
-                                    <Text style={styles.userName}>
-                                        Emma Stone
-                                    </Text>
-                                    <Text style={styles.userAge}>
-                                        27 ans - GI06
-                                    </Text>
+                            <TouchableNativeFeedback
+                                onPress={this.clickShotgunButton}
+                                background={TouchableNativeFeedback.SelectableBackground()}>
+                                <View style={styles.user}>
+                                    <Image source={{uri: 'http://images5.fanpop.com/image/photos/29000000/Emma-Stone-s-makeup-makeup-29012581-400-400.jpg'}} style={styles.userImage} />
+                                    <View style={styles.userBio}>
+                                        <Text style={styles.userName}>
+                                            Emma Stone
+                                        </Text>
+                                        <Text style={styles.userAge}>
+                                            27 ans - GI06
+                                        </Text>
+                                    </View>
                                 </View>
-                            </View>
+                            </TouchableNativeFeedback>
 
-                            <View style={styles.actions}>
-                                <View style={styles.actionChapButton}>
-                                    <Image source={require('./img/icons/cross.png')} style={styles.actionChapImage} />
-                                    <Text style={styles.actionButton}>Chap</Text>
+                            <TouchableNativeFeedback
+                                onPress={this.clickChapButton}
+                                background={TouchableNativeFeedback.SelectableBackground()}>
+                                <View style={styles.actions}>
+                                    <View style={styles.actionChapButton}>
+                                        <Image source={require('./img/icons/cross.png')} style={styles.actionChapImage} />
+                                        <Text style={styles.actionButton}>Chap</Text>
+                                    </View>
+                                    <View style={styles.actionShotgunButton}>
+                                        <Image source={require('./img/icons/shotgun.png')} style={styles.actionShotgunImage} />
+                                        <Text style={styles.actionButton}>Shotgun</Text>
+                                    </View>
                                 </View>
-                                <View style={styles.actionShotgunButton}>
-                                    <Image source={require('./img/icons/shotgun.png')} style={styles.actionShotgunImage} />
-                                    <Text style={styles.actionButton}>Shotgun</Text>
-                                </View>
-                            </View>
+                            </TouchableNativeFeedback>
                         </View>
                     </View>
                 </DrawerLayoutAndroid>
@@ -223,14 +239,14 @@ var styles = StyleSheet.create({
         height: 70,
         borderRadius: 36,
         marginTop: 10,
-        marginRight: 10,
+        marginRight: 15,
         marginBottom: 10,
         marginLeft: 10
     },
     leftName: {
         fontWeight: 'bold',
         fontSize: 18,
-        marginTop: 28,
+        marginTop: 30,
         width: 200
     },
     rightTitle: {
