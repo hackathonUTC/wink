@@ -20,7 +20,17 @@ var app = React.createClass({
                     <Image source={require('./img/icons/shots.png')} style={styles.headerShotsIcon} />
                 </View>
                 <View style={styles.main}>
-                    <Text>Hello</Text>
+                    <View style={styles.user}>
+                        <Image source={{uri: 'http://images5.fanpop.com/image/photos/29000000/Emma-Stone-s-makeup-makeup-29012581-400-400.jpg'}} style={styles.userImage} />
+                        <View style={styles.userBio}>
+                            <Text style={styles.userName}>
+                                Emma Stone Stone Stone Stone
+                            </Text>
+                            <Text style={styles.userAge}>
+                                27 ans - GI06
+                            </Text>
+                        </View>
+                    </View>
                 </View>
             </View>
         );
@@ -62,6 +72,32 @@ var styles = StyleSheet.create({
         left: 0,
         right: 0,
         top: 45
+    },
+    user: {
+        flexDirection: 'row',
+        marginTop: 10,
+        marginRight: 10,
+        marginBottom: 10,
+        marginLeft: 10,
+        backgroundColor: 'white'
+    },
+    userBio: {
+        flexDirection: 'column',
+    },
+    userImage: {
+        width: 150,
+        height: 150,
+        marginRight: 20
+    },
+    userName: {
+        fontWeight: 'bold',
+        fontSize: 20,
+        marginTop: 10
+        
+    },
+    userAge: {
+        fontSize: 15,
+        marginTop: 10
     }
 });
 
