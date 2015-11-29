@@ -6,7 +6,7 @@ var {
     AppRegistry,
     Image,
     StyleSheet,
-    ToolbarAndroid,
+    Text,
     View,
 } = React;
 
@@ -14,8 +14,9 @@ var app = React.createClass({
     render: function() {
         return (
             <View style={styles.container}>
-                <ToolbarAndroid title="Wink" />
-                <Image source={require('./img/logo.png')} />
+                <View style={styles.header}>
+                    <Image source={require('./img/logo.png')} style={styles.image} />
+                </View>
             </View>
         );
     }
@@ -24,20 +25,20 @@ var app = React.createClass({
 var styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+    },
+    header: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        height: 45,
         backgroundColor: '#b90727',
     },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
+    image: {
+        marginTop: 5,
+        marginLeft: 10
+    }
 });
 
 AppRegistry.registerComponent('app', () => app);
